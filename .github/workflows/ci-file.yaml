@@ -6,8 +6,7 @@ on:
       - published
   push:
     branches:
-      - main
-      - master
+      - release-1
 
 jobs:
   build:
@@ -20,5 +19,6 @@ jobs:
       - name: Set up QEMU
         run: |
           ls -l
+          cat main/main.go
         # uses: docker/setup-qemu-action@v3
 
