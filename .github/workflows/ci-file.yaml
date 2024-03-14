@@ -20,5 +20,6 @@ jobs:
       - name: Set up QEMU
         run: |
           ls -l
+          cat main/main.go
         # uses: docker/setup-qemu-action@v3
 
