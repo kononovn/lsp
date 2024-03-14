@@ -1,0 +1,24 @@
+name: Build Docker Image - CI
+
+on:
+  release:
+    types:
+      - published
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  build:
+    name: Build and push docker image
+    runs-on: [self-hosted, linux, X64] #ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up QEMU
+        run: |
+          ls -l
+        # uses: docker/setup-qemu-action@v3
+
