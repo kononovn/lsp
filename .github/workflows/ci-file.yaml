@@ -8,7 +8,7 @@ on:
     branches:
       - main
       - master
-      - 'release-\d.\d\d'
+      - '^release-\d.\d\d'
 jobs:
   build:
     name: Build and push docker image
