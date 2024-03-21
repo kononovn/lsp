@@ -22,9 +22,12 @@ jobs:
         shell: bash
         if: contains(github.ref, 'release-')
         run: |
-          branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
-          version_digits=$(echo ${branch} | tr -d -c 0-9)
-          image_version=v$(echo ${version_digits} | cut -b 1).$(echo ${version_digits:1})
+          image_version=latest
+          if [ ${{ github.ref }} == 'refs/heads/release-\d.\d\d' ]; then
+            branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
+            version_digits=$(echo ${branch} | tr -d -c 0-9)
+            image_version=v$(echo ${version_digits} | cut -b 1).$(echo ${version_digits:1})
+          fi
           echo "image_version=${image_version}" >> $GITHUB_OUTPUT
         id: extract_branch
 
@@ -35,6 +38,6 @@ jobs:
           echo "Image pushed to ${{ steps.extract_branch.outputs.image_version }}"
           echo "Variable is ${{ env.MY_VAR }}"
         env:
-          MY_VAR: ${{ github.ref == 'ref/head/master' && 'latest' || steps.extract_branch.outputs.image_version }}
+          MY_VAR: ${{ image_version }}
 
         # uses: docker/setup-qemu-action@v3
