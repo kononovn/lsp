@@ -35,3 +35,4 @@ jobs:
           ls -l
           cat main/main.go
           echo "Variable is ${{ steps.set_image_tag.outputs.IMAGE_TAG }}"
+          echo "Branch is ${{ github.ref }}"
