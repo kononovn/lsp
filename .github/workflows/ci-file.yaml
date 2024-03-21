@@ -11,7 +11,7 @@ on:
       - 'release-\d.\d\d'
 
 env:
-  MY_VAR: ${{ github.event_name == 'push' && 'latest' || github.ref_name }}
+  MY_VAR: ${{ github.event_name == 'push' && 'myvar' || github.ref_name }}
 
 jobs:
   build:
