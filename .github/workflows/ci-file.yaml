@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Extract branch name
+      - name: Set image tag
         shell: bash
         run: |
           image_tag=latest
@@ -27,7 +27,7 @@ jobs:
             version_digits=$(echo ${branch} | tr -d -c 0-9)
             image_tag=v$(echo ${version_digits} | cut -b 1).$(echo ${version_digits:1})
           fi
-          echo "IMAGE_TAG=${IMAGE_TAG}" >> $GITHUB_OUTPUT
+          echo "IMAGE_TAG=${image_tag}" >> $GITHUB_OUTPUT
         id: set_image_tag
 
       - name: Set up QEMU
