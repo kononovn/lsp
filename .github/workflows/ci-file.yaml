@@ -20,7 +20,7 @@ jobs:
 
       - name: Extract branch name
         shell: bash
-        if: contains(github.ref, "release-")
+        if: contains(github.ref, 'release-')
         run: |
           branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
           version_digits=$(echo ${branch} | tr -d -c 0-9)
