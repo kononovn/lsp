@@ -8,6 +8,7 @@ on:
     branches:
       - main
       - master
+      - 'release-\d.\d\d$'
 
 jobs:
   build:
