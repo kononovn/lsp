@@ -22,7 +22,7 @@ jobs:
         shell: bash
         run: |
           image_tag=latest
-          if [ ${{ github.ref }} == 'refs/heads/release-\d.\d\d' ]; then
+          if [ ${{ github.ref }} != 'refs/heads/master' ]; then
             branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
             version_digits=$(echo ${branch} | tr -d -c 0-9)
             image_tag=v$(echo ${version_digits} | cut -b 1).$(echo ${version_digits:1})
