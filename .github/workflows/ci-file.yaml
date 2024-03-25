@@ -22,7 +22,7 @@ jobs:
       - name: Set image tag
         shell: bash
         id: bebe
-        run: echo bebebe=$(pwd) >> $GITHUB_OUTPUT
+        run: echo bebebe=$(ls -l) >> $GITHUB_OUTPUT
 
       - name: Debug
         run: |
