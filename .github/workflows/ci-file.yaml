@@ -18,6 +18,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: check test coverage
+        uses: vladopajic/go-test-coverage@v2
+        with:
+          # Configure action using config file (option 1)
+          config: ./.testcoverage.yml
+
       - name: Set image tag
         shell: bash
         run: |
