@@ -24,13 +24,12 @@ jobs:
         id: bebe
         run: echo bebebe=$(ls -l) >> $GITHUB_OUTPUT
 
-      - name: generate test coverage
-        run: go test ./pkg/... -coverprofile=./cover.out -covermode=atomic -coverpkg=./...
-
-
       - name: Debug
         run: |
           echo "Variable is ${{ steps.bebe.outputs.bebebe }}"
+
+      - name: generate test coverage
+        run: go test ./pkg/... -coverprofile=./cover.out -covermode=atomic -coverpkg=./...
 
 
       - name: check test coverage
