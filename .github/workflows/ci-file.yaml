@@ -37,6 +37,8 @@ jobs:
         with:
           # Configure action using config file (option 1)
           config: ./.testcoverage.yml
+          git-token: ${{ github.ref_name == 'main' && secrets.GITHUB_TOKEN || '' }}
+          git-branch: badges
 
       - name: Set image tag
         shell: bash
